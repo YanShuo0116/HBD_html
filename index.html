@@ -10,6 +10,8 @@
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/lottie-web@5.7.8/build/player/lottie.min.js"></script>
 </head>
 <body>
 
@@ -35,7 +37,7 @@
         <button id="reset">重置</button>
     </div>
 
-    <h1 class="valentine">小尤22歲生日!</h1>
+    <h1 class="valentine">恭喜小尤22歲生日</h1>
 
     <!-- 全螢幕信件內容 -->
     <div id="letter-overlay" class="overlay">
@@ -53,7 +55,31 @@
         </div>
     </div>
 
+    <!-- 用來顯示煙火動畫的區域 -->
+    <div id="fireworks-container" style="width: 100vw; height: 100vh;"></div>
+
     <!-- Link to JavaScript -->
     <script src="index.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var animation = lottie.loadAnimation({
+                container: document.getElementById('fireworks-container'),
+                renderer: 'svg',
+                loop: true,
+                autoplay: false,  // 初始不自動播放
+                path: 'firework.json'  //Lottie 動畫 JSON 路徑
+            });
+
+            // 按鈕觸發動畫播放
+            document.getElementById('open').addEventListener('click', function() {
+                animation.play();  // 播放動畫
+            });
+
+            document.getElementById('reset').addEventListener('click', function() {
+                animation.stop();  // 停止動畫
+            });
+        });
+    </script>
+
 </body>
 </html>
